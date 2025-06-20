@@ -1,0 +1,611 @@
+/* Import font eksternal dari Google Fonts atau lainnya */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400&display=swap');
+
+:root {
+    --color-primary: #2C5F2D; /* Hijau hutan gelap */
+    --color-secondary: #97BC62; /* Hijau lumut cerah */
+    --color-accent: #DA7B93; /* Sentuhan merah muda/karang untuk highlight */
+    --color-text-dark: #333;
+    --color-text-light: #f8f8f8;
+    --color-bg-light: #ffffff;
+    --color-bg-dark: #1E3F20; /* Hijau hutan sangat gelap */
+    --shadow-light: 0 4px 12px rgba(0,0,0,0.08);
+    --border-radius: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--color-text-dark);
+    background-color: var(--color-bg-light);
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Header --- */
+.main-header {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-light);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-light);
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Untuk responsif */
+}
+
+.logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.8em;
+    color: var(--color-secondary); /* Logo lebih menonjol */
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.main-nav ul li {
+    position: relative;
+    margin-left: 30px;
+}
+
+.main-nav ul li a {
+    color: var(--color-text-light);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 0;
+    transition: color 0.3s ease;
+}
+
+.main-nav ul li a:hover {
+    color: var(--color-accent);
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    background-color: var(--color-bg-dark);
+    list-style: none;
+    min-width: 200px;
+    box-shadow: var(--shadow-light);
+    border-radius: var(--border-radius);
+    padding: 10px 0;
+    top: 100%;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+.main-nav ul li:hover .submenu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.submenu li a {
+    padding: 8px 20px;
+    display: block;
+    color: var(--color-text-light);
+}
+
+.submenu li a:hover {
+    background-color: var(--color-primary);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.search-bar {
+    display: flex;
+    border-radius: 25px;
+    overflow: hidden;
+    background-color: rgba(255,255,255,0.1);
+}
+
+.search-bar input {
+    border: none;
+    padding: 8px 15px;
+    background: transparent;
+    color: var(--color-text-light);
+    outline: none;
+    width: 200px;
+}
+
+.search-bar input::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+.search-bar button {
+    background-color: var(--color-secondary);
+    border: none;
+    color: var(--color-bg-dark);
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: var(--color-accent);
+}
+
+.cart-icon, .user-profile {
+    color: var(--color-text-light);
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s ease;
+}
+
+.cart-icon:hover, .user-profile:hover {
+    color: var(--color-accent);
+}
+
+/* Hamburger menu untuk mobile */
+.menu-toggle {
+    display: none; /* Sembunyikan di desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: var(--color-text-light);
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    position: relative;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-text-light);
+    overflow: hidden;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../img/hero-bg.jpg') no-repeat center center/cover;
+    /* Ganti hero-bg.jpg dengan gambar gunung/hutan yang menarik */
+}
+
+.hero-content {
+    z-index: 1;
+    max-width: 800px;
+    animation: fadeInScale 1s ease-out forwards;
+}
+
+.hero-content h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.btn-primary {
+    background-color: var(--color-secondary);
+    color: var(--color-bg-dark);
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-accent);
+    transform: translateY(-3px);
+}
+
+/* --- Featured Categories --- */
+.featured-categories {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.featured-categories h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    color: var(--color-primary);
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.category-item {
+    background-color: var(--color-bg-light);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    position: relative; /* Untuk efek overlay */
+}
+
+.category-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.category-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.category-item:hover img {
+    transform: scale(1.05);
+}
+
+.category-item h3 {
+    padding: 20px 15px;
+    font-size: 1.3em;
+    color: var(--color-primary);
+    text-align: left;
+    background: linear-gradient(to top, rgba(255,255,255,1), rgba(255,255,255,0.8));
+}
+
+/* --- Product Showcase --- */
+.product-showcase {
+    padding: 80px 0;
+    background-color: #F8F8F8; /* Sedikit berbeda dari background utama */
+    text-align: center;
+}
+
+.product-showcase h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    color: var(--color-primary);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.product-card {
+    background-color: var(--color-bg-light);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.product-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.product-card h3 {
+    font-size: 1.4em;
+    margin: 15px;
+    color: var(--color-primary);
+}
+
+.product-card .price {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin: 0 15px 15px;
+}
+
+.btn-secondary {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    margin: 0 15px 15px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-secondary);
+}
+
+/* --- How It Works Section --- */
+.how-it-works {
+    padding: 80px 0;
+    text-align: center;
+    background-color: var(--color-primary); /* Latar belakang hijau tua */
+    color: var(--color-text-light);
+}
+
+.how-it-works h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    color: var(--color-secondary); /* Heading lebih cerah */
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.step-item {
+    background-color: rgba(255,255,255,0.08);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    position: relative;
+    text-align: center;
+}
+
+.step-icon {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    color: var(--color-bg-dark);
+    font-size: 2em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.step-item h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: var(--color-secondary);
+}
+
+.step-item p {
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+/* --- Community Highlight --- */
+.community-highlight {
+    padding: 100px 0;
+    text-align: center;
+    background: url('../img/community-bg.jpg') no-repeat center center/cover;
+    /* Ganti community-bg.jpg dengan gambar orang hiking */
+    color: var(--color-text-light);
+    position: relative;
+    z-index: 1;
+}
+
+.community-highlight::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Overlay gelap */
+    z-index: -1;
+}
+
+.community-highlight h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.community-highlight p {
+    font-size: 1.3em;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- Footer --- */
+.main-footer {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-light);
+    padding: 50px 0 20px;
+    font-size: 0.95em;
+}
+
+.main-footer .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-col h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: var(--color-secondary);
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 8px;
+}
+
+.footer-col ul li a {
+    color: var(--color-text-light);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+    color: var(--color-accent);
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-icons img {
+    width: 28px;
+    height: 28px;
+    filter: invert(1); /* Untuk ikon putih */
+    transition: transform 0.2s ease;
+}
+
+.social-icons img:hover {
+    transform: translateY(-3px);
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.85em;
+    opacity: 0.8;
+}
+
+/* --- Keyframe Animations --- */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* --- Responsive Design (Basic) --- */
+@media (max-width: 992px) {
+    .main-nav {
+        display: none; /* Sembunyikan navigasi di layar kecil */
+        width: 100%;
+        background-color: var(--color-bg-dark);
+        position: absolute;
+        top: 70px; /* Sesuaikan dengan tinggi header */
+        left: 0;
+        box-shadow: var(--shadow-light);
+        padding-bottom: 20px;
+    }
+
+    .main-nav.active { /* Kelas yang akan ditambahkan JS */
+        display: block;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+    }
+
+    .main-nav ul li {
+        margin: 10px 0;
+        width: 100%;
+    }
+
+    .main-nav ul li a {
+        padding: 10px 0;
+        width: 100%;
+    }
+
+    .submenu {
+        position: static; /* Submenu menjadi bagian dari aliran dokumen */
+        background-color: rgba(0,0,0,0.2);
+        box-shadow: none;
+        padding-left: 20px;
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+        border-radius: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+    }
+
+    .main-nav ul li.has-submenu.open .submenu { /* JS akan menambahkan kelas .open */
+        max-height: 200px; /* Atau nilai yang cukup besar */
+    }
+
+    .menu-toggle {
+        display: block; /* Tampilkan hamburger di layar kecil */
+    }
+
+    .header-actions {
+        order: 1; /* Pindahkan actions agar sejajar dengan logo */
+        margin-left: auto;
+    }
+
+    .search-bar {
+        width: 100%;
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    .category-grid, .product-grid, .steps-grid, .main-footer .container {
+        grid-template-columns: 1fr;
+    }
+
+    .product-card, .category-item, .step-item {
+        margin: 0 auto;
+        max-width: 400px; /* Batasi lebar item tunggal */
+    }
+
+    .community-highlight h2 {
+        font-size: 2.2em;
+    }
+}
